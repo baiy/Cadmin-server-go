@@ -2,19 +2,84 @@ package request
 
 import (
 	"github.com/baiy/Cadmin-service-go/admin"
+	"github.com/baiy/Cadmin-service-go/models/auth"
+	thisModel "github.com/baiy/Cadmin-service-go/models/request"
+	"github.com/baiy/Cadmin-service-go/system/utils"
+	"github.com/doug-martin/goqu/v9"
 )
 
 func Lists(context *admin.Context) (interface{}, error) {
-	return nil, nil
+	param := new(struct {
+		utils.Page
+		Keyword string `form:"keyword"`
+	})
+	err := context.Form(param)
+	if err != nil {
+		return nil, err
+	}
+
+	lists := make([]struct {
+		thisModel.Model
+		Auth []*auth.Model `db:"-" json:"auth"`
+	}, 0)
+	where := make(goqu.ExOr)
+	if param.Keyword != "" {
+		where["name"] = goqu.Op{"like": "%" + param.Keyword + "%"}
+		where["action"] = goqu.Op{"like": "%" + param.Keyword + "%"}
+		where["call"] = goqu.Op{"like": "%" + param.Keyword + "%"}
+	}
+	total, err := param.Select("admin_request", &lists, where)
+	if err != nil {
+		return nil, err
+	}
+
+	for index := range lists {
+		lists[index].Auth, _ = auth.GetLists(lists[index].AuthIds())
+	}
+
+	return map[string]interface{}{
+		"lists": lists,
+		"total": total,
+	}, nil
 }
 
 func Save(context *admin.Context) (interface{}, error) {
-	return nil, nil
+	param := new(struct {
+		Id     int    `form:"id"`
+		Name   string `form:"name" validate:"required"`
+		Action string `form:"action" validate:"required"`
+		Type   string `form:"type" validate:"required"`
+		Call   string `form:"call"`
+	})
+
+	err := context.Form(param)
+	if err != nil {
+		return nil, err
+	}
+
+	if param.Id == 0 {
+		return nil, thisModel.Add(param.Name, param.Action, param.Type, param.Call)
+	}
+	return nil, thisModel.Updata(param.Id, param.Name, param.Action, param.Type, param.Call)
 }
 
 func Remove(context *admin.Context) (interface{}, error) {
-	return nil, nil
+	id, err := context.InputInt("id")
+	if err != nil {
+		return nil, err
+	}
+	return nil, thisModel.Remove(id)
 }
 func Type(context *admin.Context) (interface{}, error) {
-	return nil, nil
+	lists := make([]admin.DispatchItem, admin.AllDispatcherLength())
+	i := 0
+	for type_, value := range admin.AllDispatcher() {
+		lists[i] = admin.DispatchItem{
+			Type:        type_,
+			Name:        value.Name(),
+			Description: value.Description(),
+		}
+		i++
+	}
+	return lists, nil
 }

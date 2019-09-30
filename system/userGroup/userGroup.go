@@ -81,19 +81,19 @@ func GetUser(context *admin.Context) (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-	u, err := thisModel.GetById(param.Id)
+	current, err := thisModel.GetById(param.Id)
 	if err != nil {
 		return nil, err
 	}
 
 	noAssign := make([]user.Model, 0)
-	userIds := u.UserIds()
+	exist := current.UserIds()
 	where := make(goqu.Ex)
 	if param.Keyword != "" {
 		where["username"] = goqu.Op{"like": "%" + param.Keyword + "%"}
 	}
-	if len(userIds) != 0 {
-		where["id"] = goqu.Op{"notin": userIds}
+	if len(exist) != 0 {
+		where["id"] = goqu.Op{"notin": exist}
 	}
 	total, err := param.Select("admin_user", &noAssign, where)
 	if err != nil {

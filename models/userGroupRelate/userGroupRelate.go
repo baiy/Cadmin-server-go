@@ -21,6 +21,14 @@ func AuthIds(userGroupIds []int) []int {
 	return ids
 }
 
+func UserGroupIds(authIds []int) []int {
+	ids := make([]int, 0)
+	_ = models.Db.From("admin_user_group_relate").Select("admin_user_group_id").Where(goqu.Ex{
+		"admin_auth_id": authIds,
+	}).ScanVals(&ids)
+	return ids
+}
+
 // 用户分组权限检查
 func Check(authIds []int, userGroupIds []int) bool {
 	if len(authIds) == 0 || len(userGroupIds) == 0 {
@@ -32,6 +40,13 @@ func Check(authIds []int, userGroupIds []int) bool {
 		return false
 	}
 	return len(intersect.Simple(existAuthIds, authIds).([]interface{})) != 0
+}
+
+func Add(userGroupId, authId int) error {
+	_, err := models.Db.Insert("admin_user_group_relate").Rows(
+		goqu.Record{"admin_user_group_id": userGroupId, "admin_auth_id": authId},
+	).Executor().Exec()
+	return err
 }
 
 func Remove(userGroupId, authId int) error {

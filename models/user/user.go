@@ -53,7 +53,7 @@ func (m Model) MenuIds() []int {
 }
 
 func (m Model) RequestIds() []int {
-	return menuRelate.MenuIds(m.AuthIds())
+	return requestRelate.RequestIds(m.AuthIds())
 }
 
 func Add(username, password string, status int) error {
@@ -87,7 +87,7 @@ func Remove(id int) error {
 		"id": id,
 	}).Executor().Exec()
 	if err == nil {
-		err = userRelate.Remove(0, id)
+		_ = userRelate.Remove(0, id)
 	}
 	return err
 }

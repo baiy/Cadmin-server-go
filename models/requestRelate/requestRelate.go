@@ -20,6 +20,21 @@ func AuthIds(requestIds []int) []int {
 	return ids
 }
 
+func RequestIds(authIds []int) []int {
+	ids := make([]int, 0)
+	_ = models.Db.From("admin_request_relate").Select("admin_request_id").Where(goqu.Ex{
+		"admin_auth_id": authIds,
+	}).ScanVals(&ids)
+	return ids
+}
+
+func Add(requestId, authId int) error {
+	_, err := models.Db.Insert("admin_request_relate").Rows(
+		goqu.Record{"admin_request_id": requestId, "admin_auth_id": authId},
+	).Executor().Exec()
+	return err
+}
+
 func Remove(requestId, authId int) error {
 	if requestId == 0 && authId == 0 {
 		return errors.New("参数错误")

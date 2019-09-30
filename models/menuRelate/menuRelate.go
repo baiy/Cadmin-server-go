@@ -20,6 +20,13 @@ func MenuIds(authIds []int) []int {
 	return ids
 }
 
+func Add(menuId, authId int) error {
+	_, err := models.Db.Insert("admin_menu_relate").Rows(
+		goqu.Record{"admin_menu_id": menuId, "admin_auth_id": authId},
+	).Executor().Exec()
+	return err
+}
+
 func Remove(menuId, authId int) error {
 	if menuId == 0 && authId == 0 {
 		return errors.New("参数错误")
