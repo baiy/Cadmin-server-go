@@ -3,8 +3,8 @@ package userGroupRelate
 import (
 	"errors"
 	"github.com/baiy/Cadmin-service-go/models"
+	"github.com/baiy/Cadmin-service-go/utils/set"
 	"github.com/doug-martin/goqu/v9"
-	"github.com/juliangruber/go-intersect"
 )
 
 type Model struct {
@@ -39,7 +39,7 @@ func Check(authIds []int, userGroupIds []int) bool {
 	if len(existAuthIds) == 0 {
 		return false
 	}
-	return len(intersect.Simple(existAuthIds, authIds).([]interface{})) != 0
+	return len(set.IntSliceIntersect(existAuthIds, authIds)) != 0
 }
 
 func Add(userGroupId, authId int) error {

@@ -11,6 +11,7 @@ import (
 	"github.com/baiy/Cadmin-service-go/models/userGroup"
 	"github.com/baiy/Cadmin-service-go/models/userGroupRelate"
 	"github.com/baiy/Cadmin-service-go/system/utils"
+	"github.com/baiy/Cadmin-service-go/utils/set"
 	"github.com/doug-martin/goqu/v9"
 )
 
@@ -280,8 +281,19 @@ func AssignMenu(context *admin.Context) (interface{}, error) {
 	}
 
 	exist := current.MenuIds()
-	// 菜单更新 todo https://github.com/deckarep/golang-set
-	return param, nil
+
+	// 删除
+	temp := set.IntSliceDifference(exist, param.MenuIds)
+	if len(temp) > 0 {
+		_ = menuRelate.RemoveMultiple(temp, param.Id)
+	}
+
+	// 添加
+	temp = set.IntSliceDifference(param.MenuIds, exist)
+	if len(temp) > 0 {
+		_ = menuRelate.AddMultiple(temp, param.Id)
+	}
+	return nil, nil
 }
 
 func inSliceInt(n int, list []int) bool {

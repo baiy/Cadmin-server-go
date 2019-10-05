@@ -27,6 +27,26 @@ func Add(menuId, authId int) error {
 	return err
 }
 
+func AddMultiple(menuIds []int, authId int) error {
+	rows := make([]goqu.Record, len(menuIds))
+	for key, menuId := range menuIds {
+		rows[key] = goqu.Record{
+			"admin_menu_id": menuId,
+			"admin_auth_id": authId,
+		}
+	}
+	_, err := models.Db.Insert("admin_menu_relate").Rows(rows).Executor().Exec()
+	return err
+}
+
+func RemoveMultiple(menuIds []int, authId int) error {
+	_, err := models.Db.Delete("admin_menu_relate").Where(goqu.Ex{
+		"admin_auth_id": authId,
+		"admin_menu_id": menuIds,
+	}).Executor().Exec()
+	return err
+}
+
 func Remove(menuId, authId int) error {
 	if menuId == 0 && authId == 0 {
 		return errors.New("参数错误")
