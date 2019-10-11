@@ -43,7 +43,7 @@ func main() {
 
 	http.HandleFunc("/api/admin/", func(writer http.ResponseWriter, request *http.Request) {
 		// 前后端分离项目一般会有跨域问题 自行处理
-		writer.Header().Set("Access-Control-Allow-Origin", "*")
+		writer.Header().Add("Access-Control-Allow-Origin", "*")
 		writer.Header().Add("Access-Control-Allow-Headers", "Content-Type")
 
 		context := admin.NewContext(writer, request)
