@@ -29,6 +29,14 @@ go get -u github.com/baiy/Cadmin-server-go
 
 [main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/beego/main.go.go ':include :type=go')
 
+##### Gorm
+
+[main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/gorm/main.go.go ':include :type=go')
+
+##### Xorm
+
+[main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/xorm/main.go.go ':include :type=go')
+
 
 ### 自定义用户密码生成策略
 
