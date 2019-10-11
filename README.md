@@ -1,8 +1,6 @@
 Cadmin golang 服务端 
 
-> 项目地址: 
-
->[https://github.com/baiy/Cadmin-server-go](https://github.com/baiy/Cadmin-server-go)
+> 项目地址: [https://github.com/baiy/Cadmin-server-go](https://github.com/baiy/Cadmin-server-go)
 
 ### 特点
 
