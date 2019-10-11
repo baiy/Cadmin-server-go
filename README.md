@@ -8,6 +8,7 @@ Cadmin golang 服务端
 2. 对请求处理按照请求类型可自定义`请求调度类`,便于不用业务系统使用和开发. 
 
 ### 安装
+
 ```
 go get -u github.com/baiy/Cadmin-server-go
 ```
@@ -21,19 +22,19 @@ go get -u github.com/baiy/Cadmin-server-go
 
 #### 原生
 
-[main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/native/main.go.go ':include :type=go')
+[main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/native/main.go ':include :type=go')
 
 #### Beego
 
-[main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/beego/main.go.go ':include :type=go')
+[main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/beego/main.go ':include :type=go')
 
 #### Gorm
 
-[main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/gorm/main.go.go ':include :type=go')
+[main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/gorm/main.go ':include :type=go')
 
 #### Xorm
 
-[main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/xorm/main.go.go ':include :type=go')
+[main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/xorm/main.go ':include :type=go')
 
 
 ### 自定义用户密码生成策略
