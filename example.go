@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/baiy/Cadmin-service-go/admin"
-	_ "github.com/baiy/Cadmin-service-go/system" // 加载Cadmin内置action
+	_ "github.com/baiy/Cadmin-service-go/system" // 注册内置请求处理方法
 	_ "github.com/go-sql-driver/mysql"
 	"net/http"
 )
