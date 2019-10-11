@@ -22,7 +22,7 @@ go get -u github.com/baiy/Cadmin-server-go
 > 在代码安装和数据库导入完毕后, 接下来需要将后台系统的入口代码嵌入当前系统的合适位置, 并进行相应的配置
 
 #### 入口代码示例
-[example.go](https://github.com/baiy/Cadmin-server-go/blob/master/example.go ':include :type=go')
+[example.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example.go ':include :type=go')
 
 ### 自定义用户密码生成策略
 
