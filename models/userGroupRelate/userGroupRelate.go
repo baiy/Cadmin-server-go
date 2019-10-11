@@ -2,8 +2,8 @@ package userGroupRelate
 
 import (
 	"errors"
-	"github.com/baiy/Cadmin-service-go/models"
-	"github.com/baiy/Cadmin-service-go/utils/set"
+	"github.com/baiy/Cadmin-server-go/models"
+	"github.com/baiy/Cadmin-server-go/utils/set"
 	"github.com/doug-martin/goqu/v9"
 )
 

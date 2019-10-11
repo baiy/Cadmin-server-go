@@ -3,13 +3,13 @@
 package system
 
 import (
-	"github.com/baiy/Cadmin-service-go/admin"
-	"github.com/baiy/Cadmin-service-go/system/auth"
-	"github.com/baiy/Cadmin-service-go/system/index"
-	"github.com/baiy/Cadmin-service-go/system/menu"
-	"github.com/baiy/Cadmin-service-go/system/request"
-	"github.com/baiy/Cadmin-service-go/system/user"
-	"github.com/baiy/Cadmin-service-go/system/userGroup"
+	"github.com/baiy/Cadmin-server-go/admin"
+	"github.com/baiy/Cadmin-server-go/system/auth"
+	"github.com/baiy/Cadmin-server-go/system/index"
+	"github.com/baiy/Cadmin-server-go/system/menu"
+	"github.com/baiy/Cadmin-server-go/system/request"
+	"github.com/baiy/Cadmin-server-go/system/user"
+	"github.com/baiy/Cadmin-server-go/system/userGroup"
 )
 
 func init() {

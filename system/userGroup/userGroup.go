@@ -1,13 +1,13 @@
 package userGroup
 
 import (
-	"github.com/baiy/Cadmin-service-go/admin"
-	"github.com/baiy/Cadmin-service-go/models"
-	"github.com/baiy/Cadmin-service-go/models/auth"
-	"github.com/baiy/Cadmin-service-go/models/user"
-	thisModel "github.com/baiy/Cadmin-service-go/models/userGroup"
-	"github.com/baiy/Cadmin-service-go/models/userRelate"
-	"github.com/baiy/Cadmin-service-go/system/utils"
+	"github.com/baiy/Cadmin-server-go/admin"
+	"github.com/baiy/Cadmin-server-go/models"
+	"github.com/baiy/Cadmin-server-go/models/auth"
+	"github.com/baiy/Cadmin-server-go/models/user"
+	thisModel "github.com/baiy/Cadmin-server-go/models/userGroup"
+	"github.com/baiy/Cadmin-server-go/models/userRelate"
+	"github.com/baiy/Cadmin-server-go/system/utils"
 	"github.com/doug-martin/goqu/v9"
 )
 

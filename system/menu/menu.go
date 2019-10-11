@@ -1,8 +1,8 @@
 package menu
 
 import (
-	"github.com/baiy/Cadmin-service-go/admin"
-	thisModel "github.com/baiy/Cadmin-service-go/models/menu"
+	"github.com/baiy/Cadmin-server-go/admin"
+	thisModel "github.com/baiy/Cadmin-server-go/models/menu"
 )
 
 func Lists(context *admin.Context) (interface{}, error) {

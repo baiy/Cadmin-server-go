@@ -1,10 +1,10 @@
 package request
 
 import (
-	"github.com/baiy/Cadmin-service-go/admin"
-	"github.com/baiy/Cadmin-service-go/models/auth"
-	thisModel "github.com/baiy/Cadmin-service-go/models/request"
-	"github.com/baiy/Cadmin-service-go/system/utils"
+	"github.com/baiy/Cadmin-server-go/admin"
+	"github.com/baiy/Cadmin-server-go/models/auth"
+	thisModel "github.com/baiy/Cadmin-server-go/models/request"
+	"github.com/baiy/Cadmin-server-go/system/utils"
 	"github.com/doug-martin/goqu/v9"
 )
 

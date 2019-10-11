@@ -1,17 +1,17 @@
 package auth
 
 import (
-	"github.com/baiy/Cadmin-service-go/admin"
-	"github.com/baiy/Cadmin-service-go/models"
-	thisModel "github.com/baiy/Cadmin-service-go/models/auth"
-	"github.com/baiy/Cadmin-service-go/models/menu"
-	"github.com/baiy/Cadmin-service-go/models/menuRelate"
-	"github.com/baiy/Cadmin-service-go/models/request"
-	"github.com/baiy/Cadmin-service-go/models/requestRelate"
-	"github.com/baiy/Cadmin-service-go/models/userGroup"
-	"github.com/baiy/Cadmin-service-go/models/userGroupRelate"
-	"github.com/baiy/Cadmin-service-go/system/utils"
-	"github.com/baiy/Cadmin-service-go/utils/set"
+	"github.com/baiy/Cadmin-server-go/admin"
+	"github.com/baiy/Cadmin-server-go/models"
+	thisModel "github.com/baiy/Cadmin-server-go/models/auth"
+	"github.com/baiy/Cadmin-server-go/models/menu"
+	"github.com/baiy/Cadmin-server-go/models/menuRelate"
+	"github.com/baiy/Cadmin-server-go/models/request"
+	"github.com/baiy/Cadmin-server-go/models/requestRelate"
+	"github.com/baiy/Cadmin-server-go/models/userGroup"
+	"github.com/baiy/Cadmin-server-go/models/userGroupRelate"
+	"github.com/baiy/Cadmin-server-go/system/utils"
+	"github.com/baiy/Cadmin-server-go/utils/set"
 	"github.com/doug-martin/goqu/v9"
 )
 

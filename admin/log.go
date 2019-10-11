@@ -1,8 +1,8 @@
 package admin
 
 import (
-	"github.com/baiy/Cadmin-service-go/models/request"
-	"github.com/baiy/Cadmin-service-go/models/user"
+	"github.com/baiy/Cadmin-server-go/models/request"
+	"github.com/baiy/Cadmin-server-go/models/user"
 	"time"
 )
 

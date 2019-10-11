@@ -3,12 +3,12 @@ package user
 import (
 	"errors"
 	"fmt"
-	"github.com/baiy/Cadmin-service-go/models"
-	"github.com/baiy/Cadmin-service-go/models/menuRelate"
-	"github.com/baiy/Cadmin-service-go/models/requestRelate"
-	"github.com/baiy/Cadmin-service-go/models/userGroupRelate"
-	"github.com/baiy/Cadmin-service-go/models/userRelate"
-	"github.com/baiy/Cadmin-service-go/models/utils"
+	"github.com/baiy/Cadmin-server-go/models"
+	"github.com/baiy/Cadmin-server-go/models/menuRelate"
+	"github.com/baiy/Cadmin-server-go/models/requestRelate"
+	"github.com/baiy/Cadmin-server-go/models/userGroupRelate"
+	"github.com/baiy/Cadmin-server-go/models/userRelate"
+	"github.com/baiy/Cadmin-server-go/models/utils"
 	"github.com/doug-martin/goqu/v9"
 	"time"
 )

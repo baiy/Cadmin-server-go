@@ -2,7 +2,7 @@ package requestRelate
 
 import (
 	"errors"
-	"github.com/baiy/Cadmin-service-go/models"
+	"github.com/baiy/Cadmin-server-go/models"
 	"github.com/doug-martin/goqu/v9"
 )
 

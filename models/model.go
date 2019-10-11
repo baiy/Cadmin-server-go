@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	"github.com/baiy/Cadmin-service-go/models/utils"
+	"github.com/baiy/Cadmin-server-go/models/utils"
 	"github.com/doug-martin/goqu/v9"
 	_ "github.com/doug-martin/goqu/v9/dialect/mysql"
 	_ "github.com/go-sql-driver/mysql"

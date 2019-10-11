@@ -2,10 +2,10 @@ package auth
 
 import (
 	"errors"
-	"github.com/baiy/Cadmin-service-go/models"
-	"github.com/baiy/Cadmin-service-go/models/menuRelate"
-	"github.com/baiy/Cadmin-service-go/models/requestRelate"
-	"github.com/baiy/Cadmin-service-go/models/userGroupRelate"
+	"github.com/baiy/Cadmin-server-go/models"
+	"github.com/baiy/Cadmin-server-go/models/menuRelate"
+	"github.com/baiy/Cadmin-server-go/models/requestRelate"
+	"github.com/baiy/Cadmin-server-go/models/userGroupRelate"
 	"github.com/doug-martin/goqu/v9"
 )
 

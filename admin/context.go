@@ -3,9 +3,9 @@ package admin
 import (
 	"errors"
 	"fmt"
-	"github.com/baiy/Cadmin-service-go/models/request"
-	"github.com/baiy/Cadmin-service-go/models/token"
-	"github.com/baiy/Cadmin-service-go/models/user"
+	"github.com/baiy/Cadmin-server-go/models/request"
+	"github.com/baiy/Cadmin-server-go/models/token"
+	"github.com/baiy/Cadmin-server-go/models/user"
 	"github.com/go-playground/form"
 	"github.com/go-playground/locales/zh"
 	ut "github.com/go-playground/universal-translator"

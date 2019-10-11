@@ -2,10 +2,10 @@ package user
 
 import (
 	"errors"
-	"github.com/baiy/Cadmin-service-go/admin"
-	thisModel "github.com/baiy/Cadmin-service-go/models/user"
-	"github.com/baiy/Cadmin-service-go/models/userGroup"
-	"github.com/baiy/Cadmin-service-go/system/utils"
+	"github.com/baiy/Cadmin-server-go/admin"
+	thisModel "github.com/baiy/Cadmin-server-go/models/user"
+	"github.com/baiy/Cadmin-server-go/models/userGroup"
+	"github.com/baiy/Cadmin-server-go/system/utils"
 	"github.com/doug-martin/goqu/v9"
 )
 

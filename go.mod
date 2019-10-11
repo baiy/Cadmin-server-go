@@ -1,4 +1,4 @@
-module github.com/baiy/Cadmin-service-go
+module github.com/baiy/Cadmin-server-go
 
 go 1.13
 
