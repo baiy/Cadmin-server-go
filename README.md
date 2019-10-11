@@ -19,21 +19,19 @@ go get -u github.com/baiy/Cadmin-server-go
 ### 使用方法
 > 在代码安装和数据库导入完毕后, 接下来需要将后台系统的入口代码嵌入当前系统的合适位置, 并进行相应的配置
 
-#### 入口代码示例
-
-##### 原生
+#### 原生
 
 [main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/native/main.go.go ':include :type=go')
 
-##### Beego
+#### Beego
 
 [main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/beego/main.go.go ':include :type=go')
 
-##### Gorm
+#### Gorm
 
 [main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/gorm/main.go.go ':include :type=go')
 
-##### Xorm
+#### Xorm
 
 [main.go](https://raw.githubusercontent.com/baiy/Cadmin-server-go/master/example/xorm/main.go.go ':include :type=go')
 
