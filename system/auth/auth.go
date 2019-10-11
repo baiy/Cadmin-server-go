@@ -100,7 +100,7 @@ func GetRequest(context *admin.Context) (interface{}, error) {
 		where["action"] = goqu.Op{"like": "%" + param.Keyword + "%"}
 	}
 	where["id"] = goqu.Op{
-		"notin": append(append(exist, admin.Config.OnlyLoginRequestIds...), admin.Config.NoCheckLoginRequestIds...),
+		"notin": append(append(exist, admin.OnlyLoginRequestIds...), admin.NoCheckLoginRequestIds...),
 	}
 	total, err := param.Select("admin_request", &noAssign, where)
 	if err != nil {

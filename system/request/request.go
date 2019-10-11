@@ -8,6 +8,12 @@ import (
 	"github.com/doug-martin/goqu/v9"
 )
 
+type DispatchItem struct {
+	Type        string `json:"type"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+}
+
 func Lists(context *admin.Context) (interface{}, error) {
 	param := new(struct {
 		utils.Page
@@ -71,10 +77,10 @@ func Remove(context *admin.Context) (interface{}, error) {
 	return nil, thisModel.Remove(id)
 }
 func Type(context *admin.Context) (interface{}, error) {
-	lists := make([]admin.DispatchItem, admin.AllDispatcherLength())
+	lists := make([]DispatchItem, admin.AllDispatcherLength())
 	i := 0
 	for type_, value := range admin.AllDispatcher() {
-		lists[i] = admin.DispatchItem{
+		lists[i] = DispatchItem{
 			Type:        type_,
 			Name:        value.Name(),
 			Description: value.Description(),

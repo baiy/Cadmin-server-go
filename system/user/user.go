@@ -56,7 +56,7 @@ func Save(context *admin.Context) (interface{}, error) {
 	}
 	password := ""
 	if param.Password != "" {
-		password = string(admin.Config.PasswodHash.Hash([]byte(param.Password)))
+		password = string(admin.Passworder.Hash([]byte(param.Password)))
 	}
 	if param.Id == 0 {
 		if param.Password == "" {

@@ -13,6 +13,7 @@ import (
 	zhTranslations "gopkg.in/go-playground/validator.v9/translations/zh"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 var (
@@ -21,6 +22,28 @@ var (
 	uni      *ut.UniversalTranslator
 	trans    ut.Translator
 )
+
+// 请求标识变量名
+var ActionName = "_action"
+
+// 请求token变量名
+var TokenName = "_token"
+
+// 无需登录的请求ID
+var NoCheckLoginRequestIds = []int{1}
+
+// 无需检查权限/只需要登录的请求ID
+var OnlyLoginRequestIds = []int{2, 3}
+
+// 添加无需登录的请求ID
+func AddNoCheckLoginRequestId(ids ...int) {
+	NoCheckLoginRequestIds = append(NoCheckLoginRequestIds, ids...)
+}
+
+// 添加无需检查权限/只需要登录的请求ID
+func AddOnlyLoginRequestId(ids ...int) {
+	OnlyLoginRequestIds = append(OnlyLoginRequestIds, ids...)
+}
 
 func init() {
 	zhTranslator := zh.New()
@@ -69,6 +92,9 @@ func (c *Context) run() {
 }
 
 func (c *Context) SetResponse(r *Response) {
+	if LogCallback != nil {
+		LogCallback(LogContent{User: c.User, Request: c.Request, Response: c.Response, Time: time.Now()})
+	}
 	c.Response = r
 }
 
@@ -77,7 +103,7 @@ func (c *Context) Output() error {
 }
 
 func (c *Context) initRequest() error {
-	c.Action = c.HttpRequest.URL.Query().Get(Config.ActionName)
+	c.Action = c.HttpRequest.URL.Query().Get(ActionName)
 	if c.Action == "" {
 		return errors.New("action参数错误")
 	}
@@ -90,7 +116,7 @@ func (c *Context) initRequest() error {
 }
 
 func (c *Context) initUser() error {
-	c.Token = c.HttpRequest.URL.Query().Get(Config.TokenName)
+	c.Token = c.HttpRequest.URL.Query().Get(TokenName)
 	if c.Token == "" {
 		return errors.New("token 为空")
 	}
@@ -110,7 +136,7 @@ func (c *Context) initUser() error {
 }
 
 func (c *Context) checkAccess() error {
-	if inSliceInt(c.Request.Id, Config.NoCheckLoginRequestIds) {
+	if inSliceInt(c.Request.Id, NoCheckLoginRequestIds) {
 		return nil
 	}
 	if c.User == nil {
@@ -120,7 +146,7 @@ func (c *Context) checkAccess() error {
 	if c.User.IsDisabled() {
 		return errors.New("用户已被禁用")
 	}
-	if inSliceInt(c.Request.Id, Config.OnlyLoginRequestIds) {
+	if inSliceInt(c.Request.Id, OnlyLoginRequestIds) {
 		return nil
 	}
 

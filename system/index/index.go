@@ -33,7 +33,7 @@ func Login(context *admin.Context) (interface{}, error) {
 		return nil, errors.New("用户已经禁用")
 	}
 
-	if !admin.Config.PasswodHash.Verify([]byte(param.Password), []byte(u.Password)) {
+	if !admin.Passworder.Verify([]byte(param.Password), []byte(u.Password)) {
 		return nil, errors.New("密码错误")
 	}
 
