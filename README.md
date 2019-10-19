@@ -1,6 +1,8 @@
 Cadmin golang 服务端 
 
-> 项目地址: [https://github.com/baiy/Cadmin-server-go](https://github.com/baiy/Cadmin-server-go)
+> 项目地址: [[github](https://github.com/baiy/Cadmin-server-go)] [[gitee](https://gitee.com/baiy/Cadmin-server-go)]
+>
+> 在线文档地址: <https://baiy.github.io/Cadmin/>
 
 ### 特点
 
@@ -15,7 +17,7 @@ go get -u github.com/baiy/Cadmin-server-go
 
 ### 数据库
 
-详见 [数据库结构](server/db.md) 一章
+详见 [数据库结构](https://baiy.github.io/Cadmin/#/server/db) 一章
 
 ### 使用方法
 > 在代码安装和数据库导入完毕后, 接下来需要将后台系统的入口代码嵌入当前系统的合适位置, 并进行相应的配置
