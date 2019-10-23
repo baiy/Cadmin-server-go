@@ -51,5 +51,6 @@ func main() {
 			fmt.Println(err)
 		}
 	})
+	fmt.Println("http://127.0.0.1:8001")
 	_ = http.ListenAndServe("127.0.0.1:8001", nil)
 }
