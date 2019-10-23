@@ -33,7 +33,7 @@ var TokenName = "_token"
 var NoCheckLoginRequestIds = []int{1}
 
 // 无需检查权限/只需要登录的请求ID
-var OnlyLoginRequestIds = []int{2, 3}
+var OnlyLoginRequestIds = []int{2, 3, 4}
 
 // 添加无需登录的请求ID
 func AddNoCheckLoginRequestId(ids ...int) {

@@ -17,6 +17,7 @@ func init() {
 		"Baiy.Cadmin.System.Index.login":          index.Login,
 		"Baiy.Cadmin.System.Index.logout":         index.Logout,
 		"Baiy.Cadmin.System.Index.load":           index.Load,
+		"Baiy.Cadmin.System.User.currentSetting":  index.CurrentSetting,
 		"Baiy.Cadmin.System.User.lists":           user.Lists,
 		"Baiy.Cadmin.System.User.save":            user.Save,
 		"Baiy.Cadmin.System.User.remove":          user.Remove,

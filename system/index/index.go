@@ -87,6 +87,27 @@ func Load(context *admin.Context) (interface{}, error) {
 	}, nil
 }
 
+func CurrentSetting(context *admin.Context) (interface{}, error) {
+	param := new(struct {
+		Username       string `form:"username" validate:"required"`
+		Password       string `form:"password"`
+		RepeatPassword string `form:"repeatPassword"`
+	})
+
+	err := context.Form(param)
+	if err != nil {
+		return nil, err
+	}
+	password := ""
+	if param.Password != "" {
+		if param.Password != param.RepeatPassword {
+			return nil, errors.New("两次输入密码不一致")
+		}
+		password = string(admin.Passworder.Hash([]byte(param.Password)))
+	}
+	return nil, user.Updata(context.User.Id, param.Username, password, 0)
+}
+
 func clientIP(r *http.Request) string {
 	xForwardedFor := r.Header.Get("X-Forwarded-For")
 	ip := strings.TrimSpace(strings.Split(xForwardedFor, ",")[0])
