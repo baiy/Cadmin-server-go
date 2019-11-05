@@ -94,15 +94,16 @@ func GetRequest(context *admin.Context) (interface{}, error) {
 
 	noAssign := make([]request.Model, 0)
 	exist := current.RequestIds()
-	where := make(goqu.Ex)
+	where := make(goqu.ExOr)
 	if param.Keyword != "" {
 		where["name"] = goqu.Op{"like": "%" + param.Keyword + "%"}
 		where["action"] = goqu.Op{"like": "%" + param.Keyword + "%"}
 	}
-	where["id"] = goqu.Op{
-		"notin": append(append(exist, admin.OnlyLoginRequestIds...), admin.NoCheckLoginRequestIds...),
-	}
-	total, err := param.Select("admin_request", &noAssign, where)
+	total, err := param.Select("admin_request", &noAssign, where, goqu.Ex{
+		"id": goqu.Op{
+			"notin": append(append(exist, admin.OnlyLoginRequestIds...), admin.NoCheckLoginRequestIds...),
+		},
+	})
 	if err != nil {
 		return nil, err
 	}
