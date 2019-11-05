@@ -2,7 +2,6 @@ package userRelate
 
 import (
 	"errors"
-	"fmt"
 	"github.com/baiy/Cadmin-server-go/models"
 	"github.com/doug-martin/goqu/v9"
 )
@@ -47,7 +46,6 @@ func Remove(groupId, userId int) error {
 	if userId != 0 {
 		where["admin_user_id"] = userId
 	}
-	fmt.Println(models.Db.Delete("admin_user_relate").Where(where).ToSQL())
 	_, err := models.Db.Delete("admin_user_relate").Where(where).Executor().Exec()
 	return err
 }
