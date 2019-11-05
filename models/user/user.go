@@ -72,7 +72,7 @@ func Updata(id int, username, password string, status int) error {
 	if exist.Id > 0 && exist.Id != id {
 		return errors.New(fmt.Sprintf("[%s] 用户已经存在", username))
 	}
-	record := goqu.Record{"username": username, "status": status}
+	record := goqu.Record{"username": username}
 	if status != 0 {
 		record["status"] = status
 	}
