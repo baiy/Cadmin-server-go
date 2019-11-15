@@ -44,10 +44,11 @@ func Lists(context *admin.Context) (interface{}, error) {
 
 func Save(context *admin.Context) (interface{}, error) {
 	param := new(struct {
-		Id       int    `form:"id"`
-		Username string `form:"username" validate:"required"`
-		Password string `form:"password"`
-		Status   int    `form:"status"  validate:"required"`
+		Id          int    `form:"id"`
+		Username    string `form:"username" validate:"required"`
+		Password    string `form:"password"`
+		Description string `form:"description"`
+		Status      int    `form:"status"  validate:"required"`
 	})
 
 	err := context.Form(param)
@@ -62,9 +63,9 @@ func Save(context *admin.Context) (interface{}, error) {
 		if param.Password == "" {
 			return nil, errors.New("添加用户密码不能为空")
 		}
-		return nil, thisModel.Add(param.Username, password, param.Status)
+		return nil, thisModel.Add(param.Username, password, param.Status,param.Description)
 	}
-	return nil, thisModel.Updata(param.Id, param.Username, password, param.Status)
+	return nil, thisModel.Updata(param.Id, param.Username, password, param.Status,param.Description)
 }
 
 func Remove(context *admin.Context) (interface{}, error) {

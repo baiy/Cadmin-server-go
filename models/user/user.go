@@ -25,6 +25,7 @@ type Model struct {
 	LastLoginIp   string      `json:"last_login_ip"`
 	LastLoginTime *utils.Time `json:"last_login_time"`
 	Status        int         `json:"status"`
+	Description   string      `json:"description"`
 }
 
 func (m *Model) IsDisabled() bool {
@@ -56,27 +57,39 @@ func (m Model) RequestIds() []int {
 	return requestRelate.RequestIds(m.AuthIds())
 }
 
-func Add(username, password string, status int) error {
+func Add(username, password string, status int, description string) error {
 	exist, _ := GetByUserName(username)
 	if exist.Id > 0 {
 		return errors.New(fmt.Sprintf("[%s] 用户已经存在", username))
 	}
 	_, err := models.Db.Insert("admin_user").Rows(
-		goqu.Record{"username": username, "password": password, "status": status},
+		goqu.Record{"username": username, "password": password, "status": status, "description": description},
 	).Executor().Exec()
 	return err
 }
 
-func Updata(id int, username, password string, status int) error {
+func Updata(id int, username, password string, status int, description string) error {
+	exist, _ := GetByUserName(username)
+	if exist.Id > 0 && exist.Id != id {
+		return errors.New(fmt.Sprintf("[%s] 用户已经存在", username))
+	}
+	record := goqu.Record{"username": username, "status": status, "description": description}
+
+	if password != "" {
+		record["password"] = password
+	}
+	_, err := models.Db.Update("admin_user").Set(record).Where(goqu.Ex{
+		"id": id,
+	}).Executor().Exec()
+	return err
+}
+
+func SelfUpdata(id int, username, password string) error {
 	exist, _ := GetByUserName(username)
 	if exist.Id > 0 && exist.Id != id {
 		return errors.New(fmt.Sprintf("[%s] 用户已经存在", username))
 	}
 	record := goqu.Record{"username": username}
-	if status != 0 {
-		record["status"] = status
-	}
-
 	if password != "" {
 		record["password"] = password
 	}

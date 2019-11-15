@@ -105,7 +105,7 @@ func CurrentSetting(context *admin.Context) (interface{}, error) {
 		}
 		password = string(admin.Passworder.Hash([]byte(param.Password)))
 	}
-	return nil, user.Updata(context.User.Id, param.Username, password, 0)
+	return nil, user.SelfUpdata(context.User.Id, param.Username, password)
 }
 
 func clientIP(r *http.Request) string {
